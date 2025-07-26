@@ -10,24 +10,26 @@ function App() {
   let [todoItems, setTodoItems] = useState([])
 
   const addTodo = (name, date, status) => {
-    setTodoItems([...todoItems, { name, date, status }])
+    setTodoItems((currentItems) => [...currentItems, { name, date, status }])
   }
 
   const deleteTodo = (index) => {
-    const newTodoItems = todoItems.filter((_, i) => i !== index)
-    setTodoItems(newTodoItems)
+    // const newTodoItems = todoItems.filter((_, i) => i !== index)
+    setTodoItems((currentItems) => todoItems.filter((_, i) => i !== index));
   }
 
   const editTodo = (index, newName, newDate, updatedStatus) => {
-    const updatedTodoItems = todoItems.map((item, i) => {
-      if (i === index) {
-        return {...item, name: newName, date: newDate, status: updatedStatus};
-      } else {
-        return item;
-      }
-    })
     // Update the state with the modified todo items
-    setTodoItems(updatedTodoItems);
+    setTodoItems((currentItems) => {
+      const updatedTodoItems = currentItems.map((item, i) => {
+        if (i === index) {
+          return {...item, name: newName, date: newDate, status: updatedStatus};
+        } else {
+          return item;
+        }
+      })
+      return updatedTodoItems;
+    });
   }
 
   return <center className="todo-container">
