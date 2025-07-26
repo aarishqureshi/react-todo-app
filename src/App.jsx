@@ -26,6 +26,7 @@ function App() {
         return item;
       }
     })
+    // Update the state with the modified todo items
     setTodoItems(updatedTodoItems);
   }
 
