@@ -15,7 +15,7 @@ function App() {
 
   const deleteTodo = (index) => {
     // const newTodoItems = todoItems.filter((_, i) => i !== index)
-    setTodoItems((currentItems) => todoItems.filter((_, i) => i !== index));
+    setTodoItems((currentItems) => currentItems.filter((_, i) => i !== index));
   }
 
   const editTodo = (index, newName, newDate, updatedStatus) => {
